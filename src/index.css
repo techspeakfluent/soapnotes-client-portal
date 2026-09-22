@@ -1,0 +1,25 @@
+.custom-scroll-bar {
+  overflow: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: transparent transparent; /* Hide thumb */
+}
+
+/* Chrome, Safari */
+.custom-scroll-bar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide initially */
+}
+.custom-scroll-bar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* On hover: show thumb */
+.custom-scroll-bar:hover {
+  scrollbar-color: #c1c1c1 transparent;
+}
+.custom-scroll-bar:hover::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 8px;
+}

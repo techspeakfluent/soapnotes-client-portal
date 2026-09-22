@@ -1,0 +1,46 @@
+name: CI
+
+# Git hooks are advisory: they can be skipped with --no-verify and are bypassed
+# by merges done on github.com. This workflow is where the checks are actually
+# enforced — on the server, on every pull request.
+on:
+  pull_request:
+    branches: [main, staging]
+  push:
+    branches: [main, staging]
+
+concurrency:
+  # One run per branch/PR; a new push cancels the previous, still-running one.
+  group: ci-${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, types and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Version comes from the `packageManager` field in package.json.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      # `postinstall` regenerates the Chakra theme typings, which live in
+      # node_modules — without it the type check rejects our recipe variants.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm check-types
+
+      - name: Build
+        run: pnpm build

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+
+# Misc
+.DS_Store
+*.pem
+
+# Claude Code local settings
+.claude/settings.json
+.claude/settings.local.json

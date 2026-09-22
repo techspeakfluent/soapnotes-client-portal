@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+echo "Running pre-push checks..."
+
+# Type-check + lint instead of a full build — `check-types` runs
+# `gen:theme-typings && tsc -b`, which catches invalid imports and missing
+# modules, the same errors a build would.
+pnpm check-types && pnpm lint
+
+if [ $? -ne 0 ]; then
+  echo "Checks failed! Push aborted."
+  exit 1
+fi
+
+echo "Pre-push checks completed successfully!"
+echo "Ready to push!"
