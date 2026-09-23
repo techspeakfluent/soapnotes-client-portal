@@ -7,7 +7,14 @@ export const buttonRecipe = defineRecipe({
     fontWeight: "500",
     lineHeight: "1.25rem",
     cursor: "pointer",
-    transition: "all 0.15s ease-in-out",
+    transition:
+      "background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out",
+    // Keyboard users need to see where they are; mouse clicks don't show it.
+    _focusVisible: {
+      outline: "2px solid",
+      outlineColor: "primary.300",
+      outlineOffset: "2px",
+    },
     _disabled: {
       opacity: 0.65,
       cursor: "not-allowed",
@@ -22,9 +29,6 @@ export const buttonRecipe = defineRecipe({
         _hover: { bg: "primary.400" },
         _focus: {
           bg: "primary.400",
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
         },
         _disabled: { bg: "gray.100", color: "gray.300" },
       },
@@ -35,9 +39,6 @@ export const buttonRecipe = defineRecipe({
         _hover: { bg: "secondary.400" },
         _focus: {
           bg: "secondary.400",
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
         },
         _disabled: { bg: "gray.100", color: "gray.300" },
       },
@@ -49,9 +50,6 @@ export const buttonRecipe = defineRecipe({
         _hover: { bg: "primary.50" },
         _focus: {
           bg: "primary.50",
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
         },
         _disabled: {
           bg: "transparent",
@@ -64,13 +62,8 @@ export const buttonRecipe = defineRecipe({
         color: "gray.300",
         border: "1px solid",
         borderColor: "gray.50 !important",
-        outline: "none",
         _hover: { bg: "gray.50", borderColor: "gray.100 !important" },
-        _focus: {
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
-        },
+        _focus: {},
         _disabled: {
           bg: "transparent",
           color: "gray.300",
@@ -100,9 +93,6 @@ export const buttonRecipe = defineRecipe({
         _hover: { bg: "error.400" },
         _focus: {
           bg: "error.400",
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
         },
         _disabled: { bg: "gray.100", color: "gray.300" },
       },
@@ -114,9 +104,6 @@ export const buttonRecipe = defineRecipe({
         _hover: { bg: "error.50" },
         _focus: {
           bg: "error.50",
-          outline: "none",
-          outlineColor: "unset",
-          outlineOffset: "0",
         },
         _disabled: {
           bg: "transparent",
