@@ -1,0 +1,11 @@
+export interface ITax {
+  id: string;
+  name: string;
+  description?: string;
+  value: number;
+  is_active?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  // rate?: number;
+  // amount?: number;
+}

@@ -14,4 +14,16 @@ export const globalCss = defineGlobalStyles({
     scrollBehavior: "smooth",
     overscrollBehaviorY: "none",
   },
+  ":focus-visible": {
+    outline: "2px solid {colors.primary.300}",
+    outlineOffset: "2px",
+  },
+  "*, *::before, *::after": {
+    "@media (prefers-reduced-motion: reduce)": {
+      animationDuration: "0.01ms !important",
+      animationIterationCount: "1 !important",
+      transitionDuration: "0.01ms !important",
+      scrollBehavior: "auto !important",
+    },
+  },
 });
